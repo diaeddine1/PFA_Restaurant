@@ -6,13 +6,13 @@
 <body>
     <h1>Restaurant Recipes</h1>
     <ul>
-    {% for recipe in recipes %}
+ 
         <li>
             <h2>{{ recipe.title }}</h2>
             <p>{{ recipe.description }}</p>
             <img src="{{ recipe.image_url }}" alt="{{ recipe.title }}">
         </li>
-    {% endfor %}
+ 
     </ul>
 </body>
 </html>
