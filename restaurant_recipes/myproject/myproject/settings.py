@@ -13,6 +13,8 @@ SPIDER_MODULES = ["myproject.spiders"]
 NEWSPIDER_MODULE = "myproject.spiders"
 
 
+
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "myproject (+http://www.yourdomain.com)"
 

@@ -11,12 +11,15 @@ class MySpiderSpider(scrapy.Spider):
         yield scrapy.Request(url, self.parse)
 
     def parse(self, response):
-        
-        yield {
-            'restaurant': response.css('.PagePromoB .PagePromo-title .Link::text').get(),
-            'img': response.xpath('//img[@class="Image"]/@data-src').get(),
-            'description': response.css('div.PagePromo-description::text').get(),
-            'adresse': response.css('div.PagePromo-address::text').get(),
+
+        for item in response.css('div.PagePromoB'):
+            yield {
+                'restaurant': item.css('.PagePromoB .PagePromo-title .Link::text').get(),
+                'img': item.xpath('//img[@class="Image"]/@data-src').get(),
+                'description': item.css('div.PagePromo-description::text').get(),
+                'adresse': item.css('div.PagePromo-address::text').get(),
+
+            }
 
 
-        }
+

@@ -10,6 +10,7 @@ def recipe_list(request):
     recipes = Recipe.objects.all()
     return render(request, 'recipe_list.html', {'recipes': recipes})
 
+
 @require_GET
 def scrapped_data(request):
     # Load the scrapped data from the JSON file
@@ -18,3 +19,4 @@ def scrapped_data(request):
 
     # Return the scrapped data as a JSON response
     return JsonResponse({'scrapped_data': scrapped_data})
+
