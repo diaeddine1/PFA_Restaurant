@@ -4,17 +4,15 @@ import axios from 'axios';
 export default function Data() {
  
     const[restaurants,setrestaurants]=useState([])
-    useEffect(()=>{
-      const fetchData = async () => {
-        try {
-          const response = await axios.get("http://127.0.0.1:8000/data");
-          setrestaurants(response.data.scrapped_data);
-        } catch (error) {
-          console.log(error);
-        }         
-      }   
-      fetchData(); 
-        },[])
+    useEffect(() => {
+      const fetchData = () => {
+        return axios
+          .get('http://127.0.0.1:8000/data')
+          .then((response) => setrestaurants(response.data.scrapped_data))
+          .catch((error) => console.log(error));
+      };
+      fetchData();
+    }, []);
         
 
   return (

@@ -11,8 +11,11 @@
             <a href="/"> 
              <li className="home">Home</li>
              </a>
+             <a href="/Restaurants"> 
              <li className="resto">Restaurant</li>
+             </a> 
              <a href="/AboutUs" className="info">About Us</a>
+             
 
          
           </div>
