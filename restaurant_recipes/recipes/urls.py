@@ -1,9 +1,10 @@
-from django.urls import path, include
-from .views import recipe_list
 
+from django.urls import path
+
+from . import views
 app_name = 'recipes'
 
 urlpatterns = [
-    path('', recipe_list, name='recipe_list'),
 
-]
+    path('', views.recipe_list, name='recipe_list'),
+    path('data',views.scrapped_data)

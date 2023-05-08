@@ -11,6 +11,7 @@ class MySpiderSpider(scrapy.Spider):
         yield scrapy.Request(url, self.parse)
 
     def parse(self, response):
+
         for item in response.css('div.PagePromoB'):
             yield {
                 'restaurant': item.css('.PagePromoB .PagePromo-title .Link::text').get(),
@@ -18,7 +19,7 @@ class MySpiderSpider(scrapy.Spider):
                 'description': item.css('div.PagePromo-description::text').get(),
                 'adresse': item.css('div.PagePromo-address::text').get(),
 
-
             }
+
 
 
