@@ -1,12 +1,12 @@
 from django.db import models
-from bs4 import BeautifulSoup
-import requests
 
-class Recipe(models.Model):
-    title = models.CharField(max_length=200)
+
+class Restaurant(models.Model):
+    name = models.CharField(max_length=255)
+    image_path = models.CharField(max_length=255)
     description = models.TextField()
-    image_url = models.URLField()
+    address = models.CharField(max_length=255)
 
     def __str__(self):
-        return self.title
+        return self.name
 
