@@ -1,13 +1,13 @@
 
 # Create your views here.
 from django.shortcuts import render
-from .models import Recipe
+from .models import Restaurant
 from django.views.decorators.http import require_GET
 from django.http import JsonResponse
 import json
 
 def recipe_list(request):
-    recipes = Recipe.objects.all()
+    recipes = Restaurant.objects.all()
     return render(request, 'recipe_list.html', {'recipes': recipes})
 
 

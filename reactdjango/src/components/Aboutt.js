@@ -1,7 +1,7 @@
 
 import React from 'react'
 
-export default function About() {
+export default function Aboutt() {
   return (
     <div className='about'>
        <span> WE ARE A WEBSITE THAT GETS DATA FROM OTHER WEBSITES BY SCRAPING AND DISPLAYING THEM IN OURS.</span>
@@ -10,14 +10,7 @@ export default function About() {
        <span>AND</span>
        <a className='hover' href='https://github.com/mimidoox'> MOHAMED ARRAJ</a>
 
-       <span>AND</span>
-       <a className='hover' href='https://github.com/amellalzakaria'> ZAKARIA  AMELLAL</a>
-
-       <span>AND</span>
-       <a className='hover' href='https://github.com/mimidoox'> HICHAM BENAALIOUA</a>
-
-       <span>AND</span>
-       <a className='hover' href='https://github.com/nezarcyy'> NIZAR AIT SIMH</a>
+      
     </div>
   )
 }

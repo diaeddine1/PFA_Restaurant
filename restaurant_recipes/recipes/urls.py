@@ -1,10 +1,11 @@
 
 from django.urls import path
 
-from django.urls import path
-from .views import recipe_list
 
+from django.urls import path
 from . import views
+
+
 app_name = 'recipes'
 
 urlpatterns = [
@@ -14,4 +15,7 @@ urlpatterns = [
 
     
 ]
+
+
+
 

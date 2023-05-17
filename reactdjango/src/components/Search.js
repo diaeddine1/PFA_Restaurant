@@ -7,6 +7,7 @@ import axios from "axios";
 import Contain from "./Contain";
 import {BsSearchHeartFill} from "react-icons/bs";
 import {BiCommentError} from "react-icons/bi";
+import { AiOutlineSearch } from "react-icons/ai";
 function Search()
     {
     
@@ -23,40 +24,48 @@ function Search()
       setPlaceholder('Search Restaurant\'s Name');
     };
 
-    const filteredRestaurants = restaurants.filter((restaurant) =>
-    restaurant.restaurant.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+  
+
+    const filteredRestaurants = restaurants.filter((restaurant) =>restaurant.restaurant && restaurant.restaurant.toLowerCase().includes(searchQuery.toLowerCase()));
+
     const handleSearchChange = (event) => {
       setSearchQuery(event.target.value);
     }
-
+    
+      
       useEffect(() => {
         const fetchData = () => {
           return axios
             .get('http://127.0.0.1:8000/data')
             .then((response) => setrestaurants(response.data.scrapped_data))
             .catch((error) => console.log(error));
-        };
-        fetchData();
+      };
+      fetchData();
+        
       }, []);
       
-
+      
+      
       return(
         <>
          <div className="search-div">
-            <BsSearchHeartFill style={{color:"dodgerblue"}}/>
-             <input type="text" className="search"  placeholder={placeholder} onBlur={handleBlur} onFocus={handleFocus} onChange={e=>setSearchQuery(e.target.value)}/>
-             </div>
-             <div className="slide">
-          {filteredRestaurants.length > 0 ? filteredRestaurants.map((restaurant,index) => (
-            <Contain
-            key={index}
-            nom={restaurant.restaurant}
-            img={restaurant.img}
-          
-            adresse={restaurant.adresse}
-          />
-        )) : <div className="Error"> <p> <BiCommentError style={{fontSize:"200px",color:"crimson",marginLeft:"5%",padding:"20px"}}/> </p>No Restaurants found for <span style={{color:"crimson"}}>"{searchQuery}</span> " As a name</div>}
+            <AiOutlineSearch style={{color:"#2f71e7",fontSize:"30px",fontWeight:"bold",marginTop:"-6px",marginRight:"10px"}}/>
+            <input type="text" className="search"  placeholder={placeholder} onBlur={handleBlur} onFocus={handleFocus} onChange={e=>setSearchQuery(e.target.value)}/>
+            </div>
+            <div className="slide">
+            {filteredRestaurants.length > 0 ? filteredRestaurants.map((restaurant,index) => (
+              <Contain
+                key={index}
+                nom={restaurant.restaurant}
+                img={restaurant.img1}
+                
+                adresse={restaurant.address}
+            
+              />
+          )) : <div className="Error"> 
+                  <p> <BiCommentError style={{fontSize:"200px",color:"crimson",marginLeft:"5%",padding:"20px"}}/> 
+                  </p>No Restaurants found for <span style={{color:"crimson"}}>"{searchQuery}</span> " As a name</div>
+          }
         </div>
         </>
      
