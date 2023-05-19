@@ -381,10 +381,11 @@ footer {
 }
 
 .form {
-  height: 500px;
+  height: 300px;
   width: 50%;
-  margin-top: 7%;
+  margin-top: 0%;
   margin-left: 25%;
+  margin-bottom: 0px;
   display: grid;
   place-items: center;
   background-color: #76a1ef;
@@ -428,4 +429,30 @@ footer {
 
 .hl {
   color: red;
+}
+
+.reservation_container
+{
+  display: grid;
+  row-gap: 0;
+}
+
+.my_reservation
+{
+  
+  margin-top: 3%;
+  margin-left: 25%;
+  width: 50%;
+  background-color: #76a1ef;
+  height: 500px;
+  border-radius: 5px;
+  padding: 30px;
+  font-size: 20px;
+  display: grid;
+  
+}
+.my_reservation h1
+{
+  text-align: center;
+  padding: 5px;
 }
