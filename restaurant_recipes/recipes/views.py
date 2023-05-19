@@ -5,13 +5,17 @@ from .models import Restaurant
 from django.views.decorators.http import require_GET
 from django.http import JsonResponse
 import json
+from django.views.decorators.csrf import csrf_exempt
+
 
 def recipe_list(request):
     recipes = Restaurant.objects.all()
     return render(request, 'recipe_list.html', {'recipes': recipes})
 
 
+
 @require_GET
+@csrf_exempt
 def scrapped_data(request):
     # Load the scrapped data from the JSON file
     with open('myproject/data.json', 'r',encoding='utf8') as file:
