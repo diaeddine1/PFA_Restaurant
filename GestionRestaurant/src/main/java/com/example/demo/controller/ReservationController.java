@@ -2,7 +2,9 @@ package com.example.demo.controller;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -60,5 +62,19 @@ public class ReservationController {
 	public List<Reservation> findAll() {
 		return reservationServices.findAll();
 	}
+	
+	@GetMapping("/user/{userId}/reservation")
+    public Map<String, Object>  getUserReservations(@PathVariable("userId") int userId) {
+		
+		Map<String, Object> response = new HashMap<>();
+       
+        List<Reservation> reservations = reservationServices.getUserReservations(userId);
+        response.put("user", userId);
+        response.put("reservations",reservations);
+        
+
+        return response;
+    }
+	
 	
 }
