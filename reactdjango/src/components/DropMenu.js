@@ -1,6 +1,14 @@
 import React from "react";
 import tinder from "../Images/tinder.png";
+import { useNavigate } from "react-router";
 function DropMenu() {
+  const userid = localStorage.getItem("userid");
+  const navigate = useNavigate(0);
+  const handlelogout = () => {
+    localStorage.removeItem("userid");
+    navigate(0);
+    navigate("/");
+  };
   return (
     <div className="menu">
       <li className="logo">
@@ -27,13 +35,33 @@ function DropMenu() {
         About Us
       </a>
 
-      <a
-        href="/login"
-        className="info"
-        style={{ fontFamily: "Pacifico, cursive" }}
-      >
-        Log in
-      </a>
+      {userid && (
+        <a
+          href="/AboutUs"
+          className="info"
+          style={{ fontFamily: "Pacifico, cursive" }}
+        >
+          Dashboard
+        </a>
+      )}
+
+      {userid !== null ? (
+        <a
+          className="info"
+          style={{ fontFamily: "Pacifico, cursive" }}
+          onClick={handlelogout}
+        >
+          logout
+        </a>
+      ) : (
+        <a
+          href="/login"
+          className="info"
+          style={{ fontFamily: "Pacifico, cursive" }}
+        >
+          Log in
+        </a>
+      )}
     </div>
   );
 }

@@ -1,5 +1,7 @@
 package com.example.demo.entities;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import jakarta.persistence.Entity;
@@ -15,19 +17,19 @@ public class Reservation {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date date;
+	private LocalDateTime date;
 	
 	@ManyToOne
 	private Restaurant restaurant;
 	
 	@ManyToOne
 	private User user;
-	
+
 	public Reservation() {
 		super();
 	}
-	
-	public Reservation(int id, Date date, Restaurant restaurant, User user) {
+
+	public Reservation(int id, LocalDateTime date, Restaurant restaurant, User user) {
 		super();
 		this.id = id;
 		this.date = date;
@@ -35,18 +37,19 @@ public class Reservation {
 		this.user = user;
 	}
 
-	
-
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Date getDate() {
+
+	public LocalDateTime getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+
+	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
 
@@ -65,6 +68,10 @@ public class Reservation {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+
+	
+
 	
 	
 

@@ -19,12 +19,11 @@ a {
 }
 
 .menu {
-  display: grid;
-  place-items: center;
-  grid-template-columns: auto auto auto auto auto;
-  column-gap: 0;
-  padding: 10px 0 10px 0;
-  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100vw;
+  height: 10vh;
   /*margin-left: 200px;*/
   background-color: #417de9;
   list-style: none;
@@ -44,9 +43,6 @@ a {
 }
 .menu > li {
   padding: 5px;
-}
-.menu :first-child {
-  column-gap: 200px;
 }
 
 footer {
@@ -109,6 +105,7 @@ footer {
 .resto {
 }
 .info {
+  cursor: pointer;
 }
 
 .menu li img {
@@ -140,6 +137,7 @@ footer {
   font-weight: bold;
 }
 .search-div {
+  padding-top: 50px;
   margin: 0 0 30px 40%;
   border: thin dodgerblue;
 }
@@ -187,8 +185,18 @@ footer {
   z-index: 0;
   margin-top: -50px;
 }
-.dine-container:hover .Dine {
-  -webkit-filter: grayscale(1);
+.dine-container {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("./Images/dine.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.dine-container:hover {
+  background-image: linear-gradient(black, black), url("./Images/dine.jpg");
+  background-size: cover;
+  background-blend-mode: saturation;
 }
 .dine-container:hover .dine-link {
   opacity: 1;
@@ -197,6 +205,7 @@ footer {
 .dine-link {
   color: white;
   font-size: 40px;
+  font-weight: bolder;
   position: absolute;
   top: 30%;
   left: 20%;
@@ -383,9 +392,6 @@ footer {
 .form {
   height: 300px;
   width: 50%;
-  margin-top: 0%;
-  margin-left: 25%;
-  margin-bottom: 0px;
   display: grid;
   place-items: center;
   background-color: #76a1ef;
@@ -415,44 +421,104 @@ footer {
   width: 100vw;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
-.login > li > img {
+.login > .loginContainer > li > img {
   width: 180px;
   height: auto;
   vertical-align: unset;
 }
-.login > li > span {
+.login > .loginContainer > li > span {
   font-size: 80px;
+}
+.loginContainer {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .hl {
   color: red;
 }
 
-.reservation_container
-{
-  display: grid;
-  row-gap: 0;
+.reservation_container {
+  width: 100vw;
+  height: 79vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.my_reservation
-{
-  
-  margin-top: 3%;
-  margin-left: 25%;
-  width: 50%;
-  background-color: #76a1ef;
-  height: 500px;
-  border-radius: 5px;
-  padding: 30px;
-  font-size: 20px;
-  display: grid;
-  
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.my_reservation h1
-{
-  text-align: center;
-  padding: 5px;
+.center h1 {
+  font-size: 2em;
+
+  padding: 10px;
+  color: #000;
+  letter-spacing: 5px;
+  margin-bottom: 60px;
+  font-weight: bold;
+  padding-left: 10px;
+}
+.center .inputbox {
+  position: relative;
+  width: 300px;
+  height: 50px;
+  margin-bottom: 50px;
+}
+.center .inputbox input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border: 2px solid #000;
+  outline: none;
+  background: none;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 1.2em;
+}
+.center .inputbox:last-child {
+  margin-bottom: 0;
+}
+.center .inputbox span {
+  position: absolute;
+  top: 14px;
+  left: 20px;
+  font-size: 1em;
+  transition: 0.6s;
+  font-family: sans-serif;
+}
+.center .inputbox input:focus ~ span,
+.center .inputbox input:valid ~ span {
+  transform: translateX(-13px) translateY(-35px);
+  font-size: 1em;
+}
+.center .inputbox [type="submit"] {
+  width: 100%;
+  background: dodgerblue;
+  color: #fff;
+  border: #fff;
+}
+.center .inputbox:hover [type="submit"] {
+  background: linear-gradient(45deg, orangered, dodgerblue);
+}
+
+.linkd {
+  color: #006cff !important;
+}
+.linkd:hover {
+  text-decoration: underline !important;
+}
+
+.errlogin {
+  color: red;
 }
