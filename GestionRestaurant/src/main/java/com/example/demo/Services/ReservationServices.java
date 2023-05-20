@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.IDao.IDao;
 import com.example.demo.entities.Reservation;
+import com.example.demo.entities.User;
 import com.example.demo.repository.ReservationRepository;
 
 @Service
@@ -45,5 +46,9 @@ public class ReservationServices implements IDao<Reservation>{
 		
 		return reserv.findById(id);
 	}
+	
+	public List<Reservation> findByUserOrderByDateDesc(User user){
+		return reserv.findByUserOrderByDateDesc(user);
+	};
 
 }

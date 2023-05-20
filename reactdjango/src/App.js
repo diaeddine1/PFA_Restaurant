@@ -14,6 +14,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Reservation from "./components/Reservation";
 import Login from "./components/Login";
+import Signup from "./components/Signup";
 //import fetchData from './components/Axios';
 
 <link
@@ -24,14 +25,15 @@ import Login from "./components/Login";
 function App() {
   //fetchData()
   //console.log({globalData})
-
+  const userid = localStorage.getItem("userid");
+  console.log(userid);
   return (
     <>
       <div className="app">
         <DropMenu />
 
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home />} forceRefresh={true} />
           <Route path="/Restaurants" element={<Search />} />
 
           <Route path="/AboutUs" element={<About />} />
@@ -40,6 +42,7 @@ function App() {
           <Route path="/Map" element={<Mapp />} />
           <Route path="/Reserve/:restaurantId" element={<Reservation />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       </div>
       <Footer />

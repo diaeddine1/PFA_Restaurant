@@ -1,4 +1,4 @@
-# Restaurant Recommendation Website Based On Scrapped Data 
+# Restaurant Recommendation Website Based On Scrapped Data
 
 This project aims to scrape restaurant data from https://afar.com and store it in both a JSON file and a MySQL database. The stored data can then be retrieved and displayed on a website built using React.
 
@@ -26,10 +26,10 @@ To run this project, you will need the following installed on your local machine
 
 1. Clone the repository to your local machine:
 
-  ```
-  git clone https://github.com/mimidoox/-Restaurant-Recommendation-Website.git
-  ```
-  
+```
+git clone https://github.com/mimidoox/-Restaurant-Recommendation-Website.git
+```
+
 ## Usage
 
 1. Scrape restaurant data and store it in a file:
@@ -56,7 +56,7 @@ To run this project, you will need the following installed on your local machine
 
 - ARRAJ Mohamed
 - ABERANE Dia Eddine
-
+- Benaalioua Hicham
 
 ## Acknowledgments
 
@@ -65,5 +65,3 @@ To run this project, you will need the following installed on your local machine
 - [MySQL](https://www.mysql.com/)
 - [React](https://reactjs.org/)
 - [Axios](https://axios-http.com/)
-
-

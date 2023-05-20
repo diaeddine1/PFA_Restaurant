@@ -46,6 +46,11 @@ public class UserServices implements IDao<User>{
 		// TODO Auto-generated method stub
 		return ur.findById(id);
 	}
+	
+	public User findByEmailAndPassword(String email, String password) {
+		return ur.findByEmailAndPassword(email, password);
+		
+	}
 
 
 }

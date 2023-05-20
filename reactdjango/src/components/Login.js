@@ -1,16 +1,76 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import tinder from "../Images/tinder.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+  const navigate = useNavigate();
+  const handlesubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post("http://127.0.0.1:8080/users/login", {
+        email: email,
+        password: password,
+      });
+      console.log(response.data);
+      if (response.data.id !== undefined) {
+        setError(false);
+        localStorage.setItem("userid", response.data.id);
+        navigate("/");
+      } else {
+        setError(true);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="login">
-      <li className="logo">
-        <span className="ea">EA</span>
-        <img src={tinder} />
-      </li>
-      <h1 className="heading">
-        <Link to="/login">Login</Link> or <Link to="/signup">Sign up</Link>
-      </h1>
+      <div className="loginContainer">
+        <li className="logo">
+          <span className="ea">EA</span>
+          <img src={tinder} />
+        </li>
+
+        <br />
+        <div className="center">
+          <h1>Login to explore our services</h1>
+          <form onSubmit={handlesubmit}>
+            <div className="inputbox">
+              <input
+                type="text"
+                required="required"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <span>Email</span>
+            </div>
+            <div className="inputbox">
+              <input
+                type="password"
+                required="required"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <span>Password</span>
+            </div>
+            <div className="inputbox">
+              <input type="submit" value="Login" />
+            </div>
+          </form>
+        </div>
+        <br />
+        {error && <h6 className="errlogin">incorrect email or password</h6>}
+        <br />
+        <br />
+        <h4>
+          new user?&nbsp;&nbsp;&nbsp;&nbsp;{" "}
+          <Link className="linkd" to="/signup">
+            sign up.
+          </Link>
+        </h4>
+      </div>
     </div>
   );
 }

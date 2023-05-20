@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,17 +20,20 @@ import com.example.demo.entities.Restaurant;
 public class RestaurantController {
 	@Autowired
 	private RestaurantServices restaurantServices;
-
+	
+	@CrossOrigin
 	@PostMapping("/save")	
 	public void save(@RequestBody Restaurant restaurant) {
 		restaurantServices.save(restaurant);
 	}
-
+	
+	@CrossOrigin
 	@DeleteMapping("/delete/{id}")
 	public void delete(@PathVariable(required = true) String id) {
 		Restaurant s = restaurantServices.findById(Integer.parseInt(id));
 		restaurantServices.delete(s);}
-
+	
+	@CrossOrigin
 	@GetMapping("/all")
 	public List<Restaurant> findAll() {
 		return restaurantServices.findAll();
