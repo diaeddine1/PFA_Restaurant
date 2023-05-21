@@ -11,7 +11,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://127.0.0.1:8080/users/login", {
+      const response = await axios.post("http://127.0.0.1:8082/users/login", {
         email: email,
         password: password,
       });
@@ -65,9 +65,10 @@ function Login() {
         <br />
         <br />
         <h4>
-          new user?&nbsp;&nbsp;&nbsp;&nbsp;{" "}
-          <Link className="linkd" to="/signup">
-            sign up.
+        <Link className="linkd" to="/signup">
+          Dont Have An Account? Register Here!
+         
+          
           </Link>
         </h4>
       </div>

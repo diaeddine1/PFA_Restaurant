@@ -11,7 +11,7 @@ function Signup() {
   const handlesubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://127.0.0.1:8080/users/save", {
+      const response = await axios.post("http://127.0.0.1:8082/users/save", {
         phone_number: "",
         email: email,
         nom: nom,
@@ -71,9 +71,9 @@ function Signup() {
         <br />
         <br />
         <h4>
-          already have an account?&nbsp;&nbsp;&nbsp;&nbsp;{" "}
+      
           <Link className="linkd" to="/login">
-            Log in.
+          Already Have An Account? Login Here!
           </Link>
         </h4>
       </div>

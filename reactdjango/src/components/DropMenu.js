@@ -37,7 +37,7 @@ function DropMenu() {
 
       {userid && (
         <a
-          href="/AboutUs"
+          href="/MyReservation"
           className="info"
           style={{ fontFamily: "Pacifico, cursive" }}
         >

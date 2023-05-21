@@ -60,6 +60,7 @@ footer {
   text-align: center;
 }
 .contain {
+  position: relative;
   margin-bottom: 50px;
   max-width: 95%;
   height: fit-content;
@@ -392,6 +393,9 @@ footer {
 .form {
   height: 300px;
   width: 50%;
+  margin-top: 10%;
+  margin-left: 25%;
+  margin-bottom: 0px;
   display: grid;
   place-items: center;
   background-color: #76a1ef;
@@ -521,4 +525,30 @@ footer {
 
 .errlogin {
   color: red;
+}
+
+
+
+.my_reservation {
+  margin-top: 10%;
+  margin-left: 25%;
+  height: 300px;
+  width: 50%;
+  display: grid;
+  place-items: center;
+  background-color: #76a1ef;
+  border-radius: 10px;
+  font-size: 23px;
+  padding: 20px;
+}
+.my_reservation h1
+{
+  margin: 0;
+}
+
+.heart
+{
+  position: absolute;
+  top: -5%;
+  right: 0%;
 }

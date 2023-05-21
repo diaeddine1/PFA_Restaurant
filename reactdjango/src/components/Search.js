@@ -26,7 +26,7 @@ function Search()
 
   
 
-    const filteredRestaurants = restaurants.filter((restaurant) =>restaurant.restaurant && restaurant.restaurant.toLowerCase().includes(searchQuery.toLowerCase()));
+    const filteredRestaurants = restaurants.filter((restaurant) =>restaurant.nom && restaurant.nom.toLowerCase().includes(searchQuery.toLowerCase()));
 
     const handleSearchChange = (event) => {
       setSearchQuery(event.target.value);
@@ -36,8 +36,8 @@ function Search()
       useEffect(() => {
         const fetchData = () => {
           return axios
-            .get('http://127.0.0.1:8000/data')
-            .then((response) => setrestaurants(response.data.scrapped_data))
+            .get('http://localhost:8082/restaurants/all')
+            .then((response) => setrestaurants(response.data))
             .catch((error) => console.log(error));
       };
       fetchData();
@@ -55,11 +55,11 @@ function Search()
             <div className="slide">
             {filteredRestaurants.length > 0 ? filteredRestaurants.map((restaurant,index) => (
               <Contain
-                key={index}
-                nom={restaurant.restaurant}
-                img={restaurant.img1}
+                key={restaurant.id}
+                nom={restaurant.nom}
+                // img={restaurant.img1}
                 
-                adresse={restaurant.address}
+                adresse={restaurant.adresse}
             
               />
           )) : <div className="Error"> 

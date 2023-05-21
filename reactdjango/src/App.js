@@ -15,6 +15,7 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Reservation from "./components/Reservation";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import MyReservation from "./components/MyReservation";
 //import fetchData from './components/Axios';
 
 <link
@@ -41,8 +42,12 @@ function App() {
 
           <Route path="/Map" element={<Mapp />} />
           <Route path="/Reserve/:restaurantId" element={<Reservation />} />
+          <Route path="/MyReservation" element={<MyReservation />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+
+
+          
         </Routes>
       </div>
       <Footer />
