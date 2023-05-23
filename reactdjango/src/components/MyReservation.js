@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
 export default function MyReservation() {
+  
     const [myreservation,setmyReservation]=useState();
     useEffect(() => {
         const fetchReservation = async () => {
@@ -25,17 +26,17 @@ export default function MyReservation() {
   return (
     <div className='my_reservation'>
         <h1>MES RESERVATIONS</h1>
-    {myreservation? myreservation.map(myreserv=>(
+    {myreservation && myreservation.length>0?( myreservation.map(myreserv=>(
 
       <Link to={`/Details/${myreserv.restaurant.nom}` }>
-        <span> Restaurant : {myreserv.restaurant.nom} </span>
-        <span> Date De Reservation : {myreserv.date}</span>
+        <p> Restaurant : {myreserv.restaurant.nom} </p>
+        <p> Date De Reservation : {myreserv.date}</p>
         
       </Link>
-      
+
 
       
-    )):(<p>Vous n'avez Aucune Reservation </p>)}
+    ))):(<p>Vous n'avez Aucune Reservation </p>)}
    
           
            

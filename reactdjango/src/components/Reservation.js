@@ -59,12 +59,12 @@ export default function Reservation() {
         
         if(reservationData.date=="")
         {
-                alert("hold on nigga")
+                alert("Please choose a time")
         }
         else
         {
             //console.log(reservation[6].date)
-            console.log("***"+reservationData.date)
+            // console.log("***"+reservationData.date)
             const reservationExists = reservation.some((item) => item.date === reservationData.date);
 
         

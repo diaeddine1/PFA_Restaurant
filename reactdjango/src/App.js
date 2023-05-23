@@ -16,6 +16,10 @@ import Reservation from "./components/Reservation";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import MyReservation from "./components/MyReservation";
+import Favoris from "./components/Favoris";
+import Profil from "./components/Profil";
+import Admin from "./components/Admin";
+import Favorites from "./components/Favorites";
 //import fetchData from './components/Axios';
 
 <link
@@ -37,17 +41,19 @@ function App() {
           <Route path="/" element={<Home />} forceRefresh={true} />
           <Route path="/Restaurants" element={<Search />} />
 
-          <Route path="/AboutUs" element={<About />} />
-          <Route path="/Details/:name" element={<Details />} />
+          <Route path="/AboutUs" element={<Aboutt />} />
+          <Route path="/Details/:id" element={<Details />} />
 
           <Route path="/Map" element={<Mapp />} />
           <Route path="/Reserve/:restaurantId" element={<Reservation />} />
           <Route path="/MyReservation" element={<MyReservation />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/favorites" element={<Favoris />} />
+          <Route path="/profil" element={<Profil />} />
           <Route path="/signup" element={<Signup />} />
 
-
-          
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/favoris" element={<Favorites />} />
         </Routes>
       </div>
       <Footer />

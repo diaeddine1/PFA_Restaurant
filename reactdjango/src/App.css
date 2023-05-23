@@ -128,7 +128,7 @@ footer {
   display: grid;
   place-items: center;
   margin-top: 8%;
-  margin-left: 20%;
+  margin-left: 25%;
   padding: 100px 100px 50px 100px;
   border-radius: 10px;
   font-size: 20px;
@@ -208,8 +208,8 @@ footer {
   font-size: 40px;
   font-weight: bolder;
   position: absolute;
-  top: 30%;
-  left: 20%;
+  top: 50%;
+  left: 15%;
   z-index: 100;
   opacity: 0;
 }
@@ -551,4 +551,75 @@ footer {
   position: absolute;
   top: -5%;
   right: 0%;
+}
+
+
+
+.restaurant {
+  height: fit-content;
+  width: 50%;
+  margin-top: 2%;
+  margin-left: 25%;
+  margin-bottom: 0px;
+  padding: 40px;
+  display: grid;
+  place-items: center;
+  background-color: #76a1ef;
+  border-radius: 10px;
+}
+
+.restaurant h1 {
+  font-family: "Circular Std", sans-serif;
+}
+.restaurant input {
+  padding: 10px 20px 10px 20px;
+  width: 300px;
+  margin: 20px 0 0 10px;
+  
+}
+
+.restaurant button[type="submit"] {
+  padding: 10px 20px 10px 20px;
+  font-size: 20px;
+  outline: none;
+  border: none;
+
+  border-radius: 5px;
+  font-family: "Circular Std", sans-serif;
+}
+
+.favorites
+{
+  display: grid;
+  max-width: 95%;
+  margin-top: 5%;
+  grid-template-columns: auto auto;
+}
+.favorites-error
+{
+  border-radius: 10px;
+  padding: 10px 20px 40px 20px;
+  background-color: #b1caf6;
+  width: 80%;
+  margin-left: 40%;
+  min-height: 300px;
+  height: fit-content;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 30px;
+
+}
+
+.drop-down
+{
+  background-color: #417de9;
+  width: 206px;
+ 
+ 
+}
+
+.show:hover>.drop-down
+{
+display: unset !important;
 }

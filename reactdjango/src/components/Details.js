@@ -35,13 +35,18 @@ import { BsClock } from "react-icons/bs";
 import { MdPriceChange } from "react-icons/md";
 import Etat from "./Etat";
 import { Link } from "react-router-dom";
+import axios from "axios";
 function Details() {
+  const userid = localStorage.getItem("userid");
+  const user = localStorage.getItem("user");
+  const [photos, setphotos] = useState([])
+  const [information, setinformation] = useState([])
   data = [
     {
       id: 1,
       restaurant: "Gusto",
       review: "89",
-      address: "Bd Mohamed VI Zone De L'Agdal, Marrakech 40020 Morocco",
+      adresse: "Bd Mohamed VI Zone De L'Agdal, Marrakech 40020 Morocco",
       etat: " Closed now",
       price_range: "$10 - $30",
       cuisines: "Italian, Mediterranean",
@@ -60,7 +65,7 @@ function Details() {
       id: 2,
       restaurant: "Pepe Nero",
       review: "4,696",
-      address: "17 Derb Cherkaoui Douar Graoua, Marrakech 40000 Morocco",
+      adresse: "17 Derb Cherkaoui Douar Graoua, Marrakech 40000 Morocco",
       etat: " Closed now",
       price_range: "Not Specified",
       cuisines:
@@ -80,7 +85,7 @@ function Details() {
       id: 3,
       restaurant: "Gm Cafe Gourmet",
       review: "300",
-      address:
+      adresse:
         "Croisement Av. Moulay Hassan Et Rue Imam Malik, Marrakech 40000 Morocco",
       etat: " Closed now",
       price_range: "$5 - $25",
@@ -100,7 +105,7 @@ function Details() {
       id: 4,
       restaurant: "La Palette Restaurant Marrakech",
       review: "707",
-      address: "24 Rue Moulay Ali, Marrakech 40000 Morocco",
+      adresse: "24 Rue Moulay Ali, Marrakech 40000 Morocco",
       etat: " Closed now",
       price_range: "$7 - $28",
       cuisines:
@@ -120,7 +125,7 @@ function Details() {
       id: 5,
       restaurant: "My Taher",
       review: "399",
-      address: "9 Rue des Banques, Marrakech 40000 Morocco",
+      adresse: "9 Rue des Banques, Marrakech 40000 Morocco",
       etat: " Closed now",
       price_range: "Not Specified",
       cuisines: "Moroccan, Mediterranean",
@@ -139,7 +144,7 @@ function Details() {
       id: 6,
       restaurant: "Dameh",
       review: "324",
-      address:
+      adresse:
         "15 Gueliz rue Qadi Ayad, El Harti RDC RÃ©sidence Mirador, Marrakech 40000 Morocco",
       etat: " Closed now",
       price_range: "$6 - $19",
@@ -159,7 +164,7 @@ function Details() {
       id: 7,
       restaurant: "Dar Zellij",
       review: "3,786",
-      address: "No1 Kaa Sour, Sidi Ben Slimane Medina, Marrakech 40000 Morocco",
+      adresse: "No1 Kaa Sour, Sidi Ben Slimane Medina, Marrakech 40000 Morocco",
       etat: " Closed now",
       price_range: "Not Specified",
       cuisines:
@@ -179,7 +184,7 @@ function Details() {
       id: 8,
       restaurant: "Las Terrazas De Andalucia",
       review: "570",
-      address:
+      adresse:
         "Hotel El Andalous, Avenue du President Kennedy Hivernage, Marrakech 40020 Morocco",
       etat: " Closed now",
       price_range: "$2 - $24",
@@ -199,7 +204,7 @@ function Details() {
       id: 9,
       restaurant: "Le Bled",
       review: "12",
-      address: "Douar Coucou Oasis Hassan II, Marrakech 40000 Morocco",
+      adresse: "Douar Coucou Oasis Hassan II, Marrakech 40000 Morocco",
       etat: " Closed now",
       price_range: "$11 - $65",
       cuisines: "Moroccan, International, Mediterranean, Barbecue, European",
@@ -218,7 +223,7 @@ function Details() {
       id: 10,
       restaurant: "Cuisine De Terroir",
       review: "2,332",
-      address: "St Kennaria 118 Immeuble biyaze, Marrakech 40000 Morocco",
+      adresse: "St Kennaria 118 Immeuble biyaze, Marrakech 40000 Morocco",
       etat: " Closed now",
       price_range: "$1 - $7",
       cuisines: "Moroccan",
@@ -237,7 +242,7 @@ function Details() {
       id: 11,
       restaurant: "Chez Yassine",
       review: "967",
-      address: "70 Rue Fatima Zahra, Marrakech 40000 Morocco",
+      adresse: "70 Rue Fatima Zahra, Marrakech 40000 Morocco",
       etat: " Closed now",
       price_range: "Not Specified",
       cuisines:
@@ -257,7 +262,7 @@ function Details() {
       id: 12,
       restaurant: "Restaurant Angsana Si Said",
       review: "209",
-      address: "24, Derb Si Said, Marrakech 40000 Morocco",
+      adresse: "24, Derb Si Said, Marrakech 40000 Morocco",
       etat: " Closed now",
       price_range: "$22 - $36",
       cuisines: "Vegetarian Friendly, Vegan Options, Gluten Free Options",
@@ -276,7 +281,7 @@ function Details() {
       id: 13,
       restaurant: "Manzil la Tortue",
       review: "364",
-      address:
+      adresse:
         "Km12, Route de Ouarzazate Douar Gzoula, Marrakech 40000 Morocco",
       etat: " Closed now",
       price_range: "$27 - $49",
@@ -296,7 +301,7 @@ function Details() {
       id: 14,
       restaurant: "L'Auberge Espagnole",
       review: "437",
-      address:
+      adresse:
         "Street Corner Tarik Ibn Ziad and Moulay Ali Gueliz, Marrakech 40000 Morocco",
       etat: " Closed now",
       price_range: "$4 - $43",
@@ -316,7 +321,7 @@ function Details() {
       id: 15,
       restaurant: "L'Ardoise du MarchÃ©",
       review: "87",
-      address:
+      adresse:
         "Rue Oummo el Banin Imm Jaffa, Gueliz El Harti, Marrakech 40000 Morocco",
       etat: " Closed now",
       price_range: "$15 - $45",
@@ -336,7 +341,7 @@ function Details() {
       id: 16,
       restaurant: "Fluffy",
       review: "114",
-      address:
+      adresse:
         "91, Avenue Hommane Fetouaki Arsat Maach, Medina Mall, Marrakech 40000 Morocco",
       etat: " Closed now",
       price_range: "$2 - $11",
@@ -356,7 +361,7 @@ function Details() {
       id: 17,
       restaurant: "La Terrasse de La Brillante - Rooftop",
       review: "109",
-      address:
+      adresse:
         "Rue Bahia 6, Riad Zitoun Jdid La Brillante Marrakech, Marrakech 40000 Morocco",
       etat: " Closed now",
       price_range: "$16 - $33",
@@ -377,7 +382,7 @@ function Details() {
       id: 18,
       restaurant: "Dar Chef",
       review: "1,257",
-      address: "Rue Kennaria N 123 Bis, Marrakech 40000 Morocco",
+      adresse: "Rue Kennaria N 123 Bis, Marrakech 40000 Morocco",
       etat: " Closed now",
       price_range: "$9 - $17",
       cuisines: "Moroccan, African, Healthy, Middle Eastern",
@@ -396,7 +401,7 @@ function Details() {
       id: 19,
       restaurant: "Casa Lalla Restaurant",
       review: "432",
-      address: "Riad Zitoun Lakdime 16 Derb Jamaa, Marrakech 40000 Morocco",
+      adresse: "Riad Zitoun Lakdime 16 Derb Jamaa, Marrakech 40000 Morocco",
       etat: " Closed now",
       price_range: "$10 - $30",
       cuisines: "French, Moroccan, European, International",
@@ -415,7 +420,7 @@ function Details() {
       id: 20,
       restaurant: "Bazaar CafÃ©",
       review: "5,509",
-      address: "Derb Sidi El Yamani, 24B, Marrakech 40000 Morocco",
+      adresse: "Derb Sidi El Yamani, 24B, Marrakech 40000 Morocco",
       etat: " Closed now",
       price_range: "$11 - $33",
       cuisines: "African, Moroccan, Mediterranean, Healthy, Middle Eastern",
@@ -434,7 +439,7 @@ function Details() {
       id: 21,
       restaurant: "La Table Ocre",
       review: "269",
-      address: "91 Avenue Homman Fetouaki, Marrakech 40000 Morocco",
+      adresse: "91 Avenue Homman Fetouaki, Marrakech 40000 Morocco",
       etat: " Closed now",
       price_range: "Not Specified",
       cuisines: "Moroccan, Mediterranean",
@@ -453,7 +458,7 @@ function Details() {
       id: 22,
       restaurant: "Terrasses Des Arts",
       review: "121",
-      address: "5 Derb L'Hotel Bab Doukala, Marrakech 40000 Morocco",
+      adresse: "5 Derb L'Hotel Bab Doukala, Marrakech 40000 Morocco",
       etat: " Closed now",
       price_range: "$5 - $25",
       cuisines: "Moroccan, Mediterranean, Cafe, International, Asian",
@@ -472,7 +477,7 @@ function Details() {
       id: 23,
       restaurant: "Pointbar",
       review: "912",
-      address:
+      adresse:
         "3 bis rue Abou Hayane Taouhidi, Gueliz, Marrakech 40000 Morocco",
       etat: " Closed now",
       price_range: "Not Specified",
@@ -492,7 +497,7 @@ function Details() {
       id: 24,
       restaurant: "Palais Dar Soukkar",
       review: "1,376",
-      address:
+      adresse:
         "3,8 KM, Route de l'Ourika Restaurant Lounge Marrakech, Marrakech 40000 Morocco",
       etat: " Closed now",
       price_range: "Not Specified",
@@ -513,7 +518,7 @@ function Details() {
       id: 25,
       restaurant: "L'Ã” A LA BOUCHE - Marrakech",
       review: "503",
-      address: "4 rue Badr GuÃ©liz Marrakech, Marrakech 40000 Morocco",
+      adresse: "4 rue Badr GuÃ©liz Marrakech, Marrakech 40000 Morocco",
       etat: " Closed now",
       price_range: "$33 - $54",
       cuisines: "French, Healthy, Gastropub",
@@ -532,7 +537,7 @@ function Details() {
       id: 26,
       restaurant: "BaromÃ¨tre Marrakech",
       review: "1,074",
-      address:
+      adresse:
         "Rue Moulay Ali GuÃ©liz RÃ©sidence Al houda, Marrakech 40000 Morocco",
       etat: " Open now",
       price_range: "Not Specified",
@@ -553,7 +558,7 @@ function Details() {
       id: 27,
       restaurant: "Medina Burger",
       review: "473",
-      address: "91 Avenue Homman Fetouaki Medina Mall, Marrakech 40000 Morocco",
+      adresse: "91 Avenue Homman Fetouaki Medina Mall, Marrakech 40000 Morocco",
       etat: " Closed now",
       price_range: "Not Specified",
       cuisines: "American",
@@ -569,33 +574,78 @@ function Details() {
       img5: "https://media-cdn.tripadvisor.com/media/photo-l/28/c5/33/46/heavenly-soft-buns-smashed.jpg",
     },
   ];
-  const { name } = useParams();
-  console.log(name);
-  const [product, setProduct] = useState({});
-  const user = localStorage.getItem("userid");
+  
+  const { id } = useParams();
+  console.log(information.id)
+  // console.log(name);
+  // const [information, setinformation] = useState({});
+  // const user = localStorage.getItem("userid");
+  // useEffect(() => {
+  //   const foundinformation = data.find((information) => information.restaurant === name);
+  //   if (foundinformation) {
+  //     setinformation(foundinformation);
+  //   }
+  // }, [name]);
+
+
   useEffect(() => {
-    const foundProduct = data.find((product) => product.restaurant === name);
-    if (foundProduct) {
-      setProduct(foundProduct);
-    }
-  }, [name]);
+    const fetchData = () => {
+      return axios
+        .get(`http://localhost:8082/restaurants/${id}/photos`)
+        .then((response) => setphotos(response.data))
+        .catch((error) => console.log(error));
+  };
+  fetchData();
+    
+  }, []);
 
-  const regex = /(<([^>]+)>)/gi;
-  let newdec = product.description;
+  useEffect(() => {
+    const fetchData = () => {
+      return axios
+        .get(`http://localhost:8082/restaurants/${id}`)
+        .then((response) => setinformation(response.data))
+        .catch((error) => console.log(error));
+  };
+  fetchData();
+    
+  }, []);
+  
+  // const regex = /(<([^>]+)>)/gi;
+  // let newdec = information.description;
 
-  if (newdec && regex.test(newdec)) {
-    newdec = newdec.replace(regex, "");
-  }
+  // if (newdec && regex.test(newdec)) {
+  //   newdec = newdec.replace(regex, "");
+  // }
 
   return (
     <>
       <div className="cent">
         <Carousel variant="dark" fade={true} indicators={false}>
-          <Carousel.Item interval={5000}>
+        {photos.length > 0? photos.map(photo=>(
+          
+           <Carousel.Item interval={5000}>
+            <img
+              style={{ height: "500px", width: "500px", objectFit: "contain" }}
+              className="d-block w-100"
+              src={photo.url}
+              alt="First slide"
+            />
+           </Carousel.Item>
+       
+        
+       )):( <Carousel.Item interval={5000}>
+        <img
+          style={{ height: "500px", width: "500px", objectFit: "contain" }}
+          className="d-block w-100"
+          src="/noimage.png"
+          alt="First slide"
+        />
+       </Carousel.Item>)}
+          {/* <Carousel.Item interval={5000}>
             <img
               style={{ height: "500px", width: "500px", objectFit: "cover" }}
               className="d-block w-100"
-              src={product.img1}
+              src={information.img1}
               alt="First slide"
             />
           </Carousel.Item>
@@ -603,7 +653,7 @@ function Details() {
             <img
               style={{ height: "500px", width: "500px", objectFit: "cover" }}
               className="d-block w-100"
-              src={product.img2}
+              src={information.img2}
               alt="Second slide"
             />
           </Carousel.Item>
@@ -611,7 +661,7 @@ function Details() {
             <img
               style={{ height: "500px", width: "500px", objectFit: "cover" }}
               className="d-block w-100"
-              src={product.img3}
+              src={information.img3}
               alt="Third slide"
             />
           </Carousel.Item>
@@ -619,7 +669,7 @@ function Details() {
             <img
               style={{ height: "500px", width: "500px", objectFit: "cover" }}
               className="d-block w-100"
-              src={product.img4}
+              src={information.img4}
               alt="Third slide"
             />
           </Carousel.Item>
@@ -632,14 +682,14 @@ function Details() {
                 borderRadius: "20px",
               }}
               className="d-block w-100"
-              src={product.img5}
+              src={information.img5}
               alt="Third slide"
             />
-          </Carousel.Item>
+          </Carousel.Item> */}
         </Carousel>
-        <div className="information">
-          <p>
-            <span className="number">{product.rating} </span>{" "}
+      <div className="information">
+            <p>
+            <span className="number">{information.rating} </span>{" "}
             <span
               style={{
                 fontSize: "23px",
@@ -649,7 +699,7 @@ function Details() {
               }}
             >
               {" "}
-              <Rating rating={product.rating} />{" "}
+              <Rating rating={information.rating} />{" "}
             </span>
             <span
               style={{
@@ -659,14 +709,14 @@ function Details() {
               }}
             >
               {" "}
-              {product.review} Review
+              {information.review} Review
             </span>
           </p>
           <p>
             <span style={{ fontSize: "20px", fontWeight: "bold" }}>
               Cuisine :{" "}
             </span>
-            <span style={{ fontSize: "20px" }}>{product.cuisines} </span>
+            <span style={{ fontSize: "20px" }}>{information.cuisine} </span>
           </p>
           <p>
             <span
@@ -677,7 +727,7 @@ function Details() {
             </span>{" "}
             <span style={{ fontSize: "20px", fontWeight: "bold" }}>
               {" "}
-              {product.price_range}{" "}
+              {information.price_range}{" "}
             </span>
           </p>
           <p>
@@ -689,7 +739,7 @@ function Details() {
             </span>{" "}
             <span style={{ fontSize: "20px", fontWeight: "bold" }}>
               {" "}
-              {product.tel}{" "}
+              {information.phone}{" "}
             </span>
           </p>
           <p>
@@ -701,12 +751,12 @@ function Details() {
             </span>{" "}
             <span style={{ fontSize: "20px", fontWeight: "bold", color: "" }}>
               {" "}
-              {product.address}{" "}
+              {information.adresse}{" "}
             </span>
           </p>
-          <Etat etat={product.etat} />
-          {user !== null ? (
-            <Link to={`/Reserve/${product.id}`} className="reserver">
+          <Etat open={information.heure_open} close={information.heure_close} /> 
+           {userid !== null ? (
+            <Link to={`/Reserve/${id}`} className="reserver">
               RESERVER
             </Link>
           ) : (
@@ -715,11 +765,11 @@ function Details() {
         </div>
       </div>
 
-      <Mapp
-        lat={product.latitude}
-        lon={product.longitude}
-        nom={product.restaurant}
-      />
+        <Mapp
+        lat={information.latitude}
+        lon={information.longitude}
+        nom={information.nom}
+      /> 
     </>
   );
 }

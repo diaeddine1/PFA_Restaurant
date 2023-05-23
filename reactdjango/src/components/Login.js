@@ -19,6 +19,7 @@ function Login() {
       if (response.data.id !== undefined) {
         setError(false);
         localStorage.setItem("userid", response.data.id);
+        localStorage.setItem("user",response.data.nom);
         navigate("/");
       } else {
         setError(true);
